@@ -1,6 +1,6 @@
 # Automatic flume pump controller
 
-This Arduino-based controller manages two flumes (A and B), each with two pumps, using a 4-channel relay and an OLED display. The system supports automatic timed cycles, manual control, and a variety of operating modes.
+This Arduino-based controller manages two flumes (A and B), each with two pumps, using a 4-channel relay and an OLED display. The system supports automatic timed cycles and manual control.
 
 ## Features
 
@@ -11,16 +11,23 @@ This Arduino-based controller manages two flumes (A and B), each with two pumps,
 
   * **Flume A only** (`btnA` / D6): turn off all pumps (if in automatic mode) and then energize pump 1 only. Leave flume B status unchanged.
   * **Flume B only** (`btnB` / D7): turn off all pumps (if in automatic mode) and then energize pump 3 only. Leave flume A status unchanged.
-  * **STOP ALL**: press button A then B (or B then A) to energize both flume A pump 1 and flume B pump 3 simultaneously. No automatic cycling until you press automatic again.
 
 * **All off**:
-  Press buttons A and B together to immediately turn off all pumps and stop any cycling.
+  Press buttons **Flume A and Flume B** together to immediately turn off all pumps and stop any cycling.
 
-* **OLED display layout**:
+* **OLED display**:
 
-  1. Header (inverted) showing countdown or mode
-  2. Flume A label (inverted) and pumps P1/P2 status
+  1. Header showing countdown or mode
+  2. Flume A label and pumps P1/P2 status
   3. Flume B label and pumps P3/P4 status
+
+## Usage
+
+1. Upload the sketch to Arduino (disconnect the system from the main power, only use the usb cable).
+3. Power on the system. All pumps remain off.
+4. Press the automatic button (D5) to begin the cycle.
+5. Use button Flume A (D6), button Flume B (D7) to start the pumps manually, or Flume A+ Flume B to stop all pumps.
+6. Watch the OLED display for status and countdown.
 
 ## Pin assignments
 
@@ -48,14 +55,7 @@ This Arduino-based controller manages two flumes (A and B), each with two pumps,
   unsigned long pumpInterval = 3UL * 3600UL * 1000UL; // 3 hours
   ```
 
-* **Pause duration**: change the `pauseDur` variable (milliseconds) for the all-off pause.
+* **Pause duration**: change the `pauseDur` variable (milliseconds) for the all-off pause (to avoid overdrawing the 230V to 12V converter with 2 pumps running simultaneously).
 
-## Usage
 
-1. Upload the sketch to your Arduino.
-2. Wire the relays, buttons, and OLED as described above.
-3. Power on the system. All pumps remain off.
-4. Press the automatic button (D5) to begin the cycle.
-5. Use button A (D6), button B (D7), or A+B to enter manual modes or stop all pumps.
-6. Watch the OLED display for status and countdown.
 
