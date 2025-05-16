@@ -11,7 +11,7 @@ This Arduino-based controller manages two flumes (A and B), each with two pumps,
 
   * **Flume A only** (`btnA` / D6): turn off all pumps (if in automatic mode) and then energize pump 1 only. Leave flume B status unchanged.
   * **Flume B only** (`btnB` / D7): turn off all pumps (if in automatic mode) and then energize pump 3 only. Leave flume A status unchanged.
-  * **Manual A & B**: press button A then B (or B then A) to energize both flume A pump 1 and flume B pump 3 simultaneously. No automatic cycling until you press automatic again.
+  * **STOP ALL**: press button A then B (or B then A) to energize both flume A pump 1 and flume B pump 3 simultaneously. No automatic cycling until you press automatic again.
 
 * **All off**:
   Press buttons A and B together to immediately turn off all pumps and stop any cycling.
